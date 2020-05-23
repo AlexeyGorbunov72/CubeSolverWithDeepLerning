@@ -10,15 +10,15 @@ using namespace std;
 class Dense {
     int sizeInLayer;
     int sizeOutLayer;
-    float* weightsOut;
     void flowIntoOutLayer();
-
+    void loadDataIntoMiddleLayer();
 public:
-    float** weightsIn;
-
+    double** weightsIn;
+    double* weightsOut;
+    double* middleLayer;
     ~Dense();
-    void operator<<(LayerLeakyReLU reluLayer); // in
-    std::vector<float > operator>>(LayerLeakyReLU reluLayer); // out
+    void operator<<(LayerLeakyReLU reLULayer); // in
+    void operator>>(LayerLeakyReLU reLULayer); // out
     Dense(std::string filePath);
 };
 

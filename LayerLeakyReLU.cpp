@@ -8,11 +8,12 @@ void LayerLeakyReLU::loadData(vector<float> inputValues) {
     this->data = inputValues;
 }
 
-void LayerLeakyReLU::translateData() {
-    for(std::vector<int>::iterator it = data.begin() ; it != data.end(); ++it){
-       *it = leakyReLU(*it, 0.30000001192092896);
+void LayerLeakyReLU::translateData(int size) {
+    for(int i = 0; i < size; i++){
+       data[i] = leakyReLU(data[i], 0.30000001192092896);
     }
 }
-vector<float > LayerLeakyReLU::getData() {
-    return this->data;
+
+LayerLeakyReLU::LayerLeakyReLU(int size) {
+    data = new double[size];
 }
