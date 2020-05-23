@@ -12,10 +12,12 @@ class Model {
         Dense d2;
         Dense d3;
         Dense d4;
+        Dense dPolicy;
         LayerLeakyReLU reLU1;
         LayerLeakyReLU reLU2;
         LayerLeakyReLU reLU3;
         LayerLeakyReLU reLU4;
+        LayerSoftmax softmaxLayer;
 
 
     public:

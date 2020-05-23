@@ -15,11 +15,16 @@ int Model::predict(int* data) {
     d3 >> reLU3;
     d4 << reLU3;
     d4 >> reLU4;
+    dPolicy << reLU4;
+    dPolicy >> softmaxLayer;
 
-    for(int i = 0; i < 50; i++){
-        std::cout << reLU4.data[i] << std::endl;
+    for(auto it = softmaxLayer.result.begin(); it < softmaxLayer.result.end(); ++it){
+        std::cout << *it << std::endl;
     }
-    return 0;
+    for(int i = 0; i < 12; i++ ){
+        std::cout << softmaxLayer.data[i] << std::endl;
+    }
+
 }
 Model::Model() {
     d1 = Dense("dense1.txt");
@@ -30,6 +35,9 @@ Model::Model() {
     reLU3 = LayerLeakyReLU(1024);
     d4 = Dense("dense4.txt");
     reLU4 = LayerLeakyReLU(50);
+    dPolicy = Dense("densePolicy.txt");
+    softmaxLayer = LayerSoftmax(12);
+
 
 
 }

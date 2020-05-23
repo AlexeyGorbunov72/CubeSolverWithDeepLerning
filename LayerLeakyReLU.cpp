@@ -3,7 +3,7 @@
 //
 
 #include "LayerLeakyReLU.h"
-#include "SetOfActivationFun.cpp"
+#include "SetOfActivationFun.h"
 
 void LayerLeakyReLU::translateData() {
     for(int i = 0; i < size; i++){

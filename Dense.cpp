@@ -50,7 +50,17 @@ void Dense::operator>>(LayerLeakyReLU reLULayer) {
     }
     reLULayer.translateData();
 }
+void Dense::operator>>(LayerSoftmax softmaxLayer) {
+
+
+   for(int i = 0; i < 12; i++){
+       softmaxLayer.data[i] = middleLayer[i];
+   }
+
+    softmaxLayer.translate();
+}
 /*
+
 Dense::~Dense() {
     for (int i = 0; i < sizeInLayer; i++) {
         delete[] weightsIn[i];
