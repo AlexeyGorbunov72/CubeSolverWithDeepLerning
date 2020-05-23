@@ -3,4 +3,4 @@ project(CubeSolverWithDeepLerning)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(CubeSolverWithDeepLerning main.cpp)
+add_executable(CubeSolverWithDeepLerning main.cpp Dense.cpp)
