@@ -5,7 +5,9 @@
 
 #include "Dense.h"
 #include "LayerLeakyReLU.h"
+#include "InputLayer.h"
 class Model {
+        InputLayer inputLayer;
         Dense d1;
         Dense d2;
         Dense d3;
@@ -18,5 +20,5 @@ class Model {
 
     public:
         Model();
-        int predict(Cube cube);
+        int predict(int* data);
 };

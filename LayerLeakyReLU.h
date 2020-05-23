@@ -2,15 +2,15 @@
 // Created by Alexey on 23.05.2020.
 //
 #pragma once
-#include "Dense.h"
 class LayerLeakyReLU {
    // void loadData(std::vector<float> inputValues);
-    void translateData();
-
-
+   int size;
 public:
+    void translateData();
     LayerLeakyReLU(int size);
+    LayerLeakyReLU(){}
     double* data;
+
 };
 
 

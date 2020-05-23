@@ -6,6 +6,7 @@
 #include <vector>
 #include "LayerLeakyReLU.h"
 #include <cstring>
+#include "InputLayer.h"
 using namespace std;
 class Dense {
     int sizeInLayer;
@@ -16,9 +17,11 @@ public:
     double** weightsIn;
     double* weightsOut;
     double* middleLayer;
-    ~Dense();
-    void operator<<(LayerLeakyReLU reLULayer); // in
-    void operator>>(LayerLeakyReLU reLULayer); // out
+   // ~Dense();
+    Dense(){}
+    void operator<<(InputLayer inputLayer);     // in for inputLayer
+    void operator<<(LayerLeakyReLU reLULayer);  // in for LeakyReLU
+    void operator>>(LayerLeakyReLU reLULayer);  // out
     Dense(std::string filePath);
 };
 

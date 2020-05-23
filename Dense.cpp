@@ -10,7 +10,7 @@ Dense::Dense(string filePath) {
     ifstream inputFile(filePath);
     inputFile >> this->sizeInLayer >> this->sizeOutLayer;
     weightsIn = new double*[this->sizeInLayer];
-    std::cout<< sizeInLayer << sizeOutLayer << std::endl;
+    std::cout << "Dense::" << filePath << " " << sizeInLayer << " " << sizeOutLayer << std::endl;
 
     middleLayer = new double[sizeOutLayer];
     for (int i = 0; i < this->sizeInLayer; i++)
@@ -36,11 +36,21 @@ void Dense::operator<<(LayerLeakyReLU reLULayer) {
 
 }
 
+void Dense::operator<<(InputLayer inputLayer) {
+    for(int i = 0; i < sizeOutLayer; i++){
+        for(int j = 0; j < sizeInLayer; j++){
+            middleLayer[i] += weightsIn[j][i] * inputLayer.data[j];
+        }
+    }
+
+}
 void Dense::operator>>(LayerLeakyReLU reLULayer) {
     for(int i = 0; i < sizeOutLayer; i++){
         reLULayer.data[i] = middleLayer[i] * weightsOut[i];
     }
+    reLULayer.translateData();
 }
+/*
 Dense::~Dense() {
     for (int i = 0; i < sizeInLayer; i++) {
         delete[] weightsIn[i];
@@ -48,4 +58,4 @@ Dense::~Dense() {
 
     delete weightsOut;
 }
-
+*/

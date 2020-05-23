@@ -3,9 +3,14 @@
 //
 
 #pragma once
-class Cube {
+
+class InputLayer {
 
 public:
+    InputLayer(){}
+    InputLayer(int* data, int size);
     int* data;
 };
+
+
 
