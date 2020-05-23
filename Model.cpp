@@ -8,14 +8,16 @@ int Model::predict(int* data) {
 
     inputLayer = InputLayer(data, 324);
     d1 << inputLayer;
-
-    for(int i = 0; i < 1024; i++){
-        std::cout << d1.middleLayer[i] << std::endl;
-    }
-    std::cout << "- - - - -  - - - - - - --  - - --  - - - -" << std::endl;
     d1 >> reLU1;
-    for(int i = 0; i < 1024; i++){
-        std::cout << reLU1.data[i] << std::endl;
+    d2 << reLU1;
+    d2 >> reLU2;
+    d3 << reLU2;
+    d3 >> reLU3;
+    d4 << reLU3;
+    d4 >> reLU4;
+
+    for(int i = 0; i < 50; i++){
+        std::cout << reLU4.data[i] << std::endl;
     }
     return 0;
 }
