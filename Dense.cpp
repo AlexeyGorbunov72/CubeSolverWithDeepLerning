@@ -6,7 +6,8 @@
 #include <fstream>
 #include <iostream>
 
-Dense::Dense(string filePath) {
+Dense::Dense(string filePath, int id) {
+    identifier = id;
     ifstream inputFile(filePath);
     inputFile >> this->sizeInLayer >> this->sizeOutLayer;
     weightsIn = new double*[this->sizeInLayer];
@@ -35,21 +36,22 @@ void Dense::addWeightsOut() {
     }
 }
 void Dense::operator<<(LayerLeakyReLU reLULayer) {
-    for(int i = 0; i < sizeInLayer; i++){
-        for(int j = 0; j < sizeOutLayer; j++){
-            middleLayer[i] += weightsIn[i][j] * reLULayer.data[i];
+    addWeightsOut();
+    for(int i = 0; i < sizeOutLayer; i++){
+        for(int j = 0; j < sizeInLayer; j++){
+            middleLayer[i] += weightsIn[j][i] * reLULayer.data[j];
         }
     }
-    //addWeightsOut();
 }
 
 void Dense::operator<<(InputLayer inputLayer) {
+    addWeightsOut();
     for(int i = 0; i < sizeOutLayer; i++){
         for(int j = 0; j < sizeInLayer; j++){
             middleLayer[i] += weightsIn[j][i] * inputLayer.data[j];
         }
     }
-    addWeightsOut();
+
 }
 void Dense::operator>>(LayerLeakyReLU reLULayer) {
     for(int i = 0; i < sizeOutLayer; i++){

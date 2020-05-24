@@ -76,15 +76,15 @@ int Model::predict(int* data) {
 
 }
 Model::Model() {
-    d1 = Dense("dense1.txt");
+    d1 = Dense("dense1.txt", 1);
     reLU1 = LayerLeakyReLU(1024);
-    d2 = Dense("dense2.txt");
+    d2 = Dense("dense2.txt", 2);
     reLU2 = LayerLeakyReLU(1024);
-    d3 = Dense("dense3.txt");
+    d3 = Dense("dense3.txt", 3);
     reLU3 = LayerLeakyReLU(1024);
-    d4 = Dense("dense4.txt");
+    d4 = Dense("dense4.txt", 4);
     reLU4 = LayerLeakyReLU(50);
-    dPolicy = Dense("densePolicy.txt");
+    dPolicy = Dense("densePolicy.txt", 5);
     softmaxLayer = LayerSoftmax(12);
 
 
