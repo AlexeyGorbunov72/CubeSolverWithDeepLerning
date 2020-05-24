@@ -26,6 +26,8 @@ Dense::Dense(string filePath) {
         inputFile >> weightsOut[i];
     }
 
+
+
 }
 void Dense::operator<<(LayerLeakyReLU reLULayer) {
     for(int i = 0; i < sizeInLayer; i++){
@@ -46,16 +48,15 @@ void Dense::operator<<(InputLayer inputLayer) {
 }
 void Dense::operator>>(LayerLeakyReLU reLULayer) {
     for(int i = 0; i < sizeOutLayer; i++){
-        reLULayer.data[i] = middleLayer[i] * weightsOut[i];
+        reLULayer.data[i] = middleLayer[i]; //* weightsOut[i];
     }
     reLULayer.translateData();
 }
 void Dense::operator>>(LayerSoftmax softmaxLayer) {
-
-
-   for(int i = 0; i < 12; i++){
-       softmaxLayer.data[i] = middleLayer[i];
-   }
+    std::cout << this->sizeOutLayer << "!" << std::endl;
+    for(int i = 0; i < 12; i++){
+       softmaxLayer.data[i] = middleLayer[i] * weightsOut[i];
+    }
 
     softmaxLayer.translate();
 }

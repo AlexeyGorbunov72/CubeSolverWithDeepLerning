@@ -5,7 +5,7 @@
 
 #include <iostream>
 double leakyReLU(double value, double alpha){
-    if(value > 0){
+    if(value >= 0.f){
         return value;
     }
     return value * alpha;

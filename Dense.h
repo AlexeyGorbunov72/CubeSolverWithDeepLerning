@@ -23,7 +23,7 @@ public:
     void operator<<(InputLayer inputLayer);     // in for inputLayer
     void operator<<(LayerLeakyReLU reLULayer);  // in for LeakyReLU
     void operator>>(LayerLeakyReLU reLULayer);  // out
-    void operator>>(LayerSoftmax softmaxLayer);
+    void operator>>(LayerSoftmax softmaxLayer); // out on softmax
     Dense(std::string filePath);
 };
 
