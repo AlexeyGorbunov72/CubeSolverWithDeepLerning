@@ -14,6 +14,7 @@ class Dense {
     int sizeOutLayer;
     void flowIntoOutLayer();
     void loadDataIntoMiddleLayer();
+    void addWeightsOut();
 public:
     double** weightsIn;
     double* weightsOut;

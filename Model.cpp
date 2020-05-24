@@ -19,48 +19,48 @@ int Model::predict(int* data) {
     dPolicy >> softmaxLayer;
     int c;
     for(int i = 0; i < 1024; i++){
-       std::cout << d1.middleLayer[i] << " ";
+       std::cout << d1.middleLayer[i] << ", ";
     }
     std::cout << std::endl;
     std::cin >> c;
     for(int i = 0; i < 1024; i++){
-        std::cout << reLU1.data[i] << " ";
+        std::cout << reLU1.data[i] << ", ";
     }
     std::cout << std::endl;
     std::cin >> c;
     for(int i = 0; i < 1024; i++){
-        std::cout << d2.middleLayer[i] << " ";
+        std::cout << d2.middleLayer[i] << ", ";
     }
 
     std::cout << std::endl;
     std::cin >> c;
     for(int i = 0; i < 1024; i++){
-        std::cout << reLU2.data[i] << " ";
+        std::cout << reLU2.data[i] << ", ";
     }
     std::cout << std::endl;
     std::cin >> c;
     for(int i = 0; i < 1024; i++){
-        std::cout << d3.middleLayer[i] << " ";
+        std::cout << d3.middleLayer[i] << ", ";
     }
     std::cout << std::endl;
     std::cin >> c;
     for(int i = 0; i < 1024; i++){
-        std::cout << reLU3.data[i] << " ";
+        std::cout << reLU3.data[i] << ", ";
     }
     std::cout << std::endl;
     std::cin >> c;
     for(int i = 0; i < 50; i++){
-        std::cout << d4.middleLayer[i] << " ";
+        std::cout << d4.middleLayer[i] << ", ";
     }
     std::cout << std::endl;
     std::cin >> c;
     for(int i = 0; i < 50; i++){
-        std::cout << reLU4.data[i] << " ";
+        std::cout << reLU4.data[i] << ", ";
     }
     std::cout << std::endl;
     std::cin >> c;
     for(int i = 0; i < 12; i++){
-        std::cout << dPolicy.middleLayer[i] << " ";
+        std::cout << dPolicy.middleLayer[i] << ", ";
     }
     std::cout << std::endl;
     std::cin >> c;

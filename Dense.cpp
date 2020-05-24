@@ -29,13 +29,18 @@ Dense::Dense(string filePath) {
 
 
 }
+void Dense::addWeightsOut() {
+    for(int i = 0; i < sizeOutLayer; i++){
+        middleLayer[i] += weightsOut[i];
+    }
+}
 void Dense::operator<<(LayerLeakyReLU reLULayer) {
     for(int i = 0; i < sizeInLayer; i++){
         for(int j = 0; j < sizeOutLayer; j++){
             middleLayer[i] += weightsIn[i][j] * reLULayer.data[i];
         }
     }
-
+    //addWeightsOut();
 }
 
 void Dense::operator<<(InputLayer inputLayer) {
@@ -44,7 +49,7 @@ void Dense::operator<<(InputLayer inputLayer) {
             middleLayer[i] += weightsIn[j][i] * inputLayer.data[j];
         }
     }
-
+    addWeightsOut();
 }
 void Dense::operator>>(LayerLeakyReLU reLULayer) {
     for(int i = 0; i < sizeOutLayer; i++){
