@@ -4,7 +4,7 @@
 
 #include "Model.h"
 #include "iostream"
-int Model::predict(int* data) {
+vector<double > Model::predict(int* data) {
 
     inputLayer = InputLayer(data, 324);
     d1 << inputLayer;
@@ -18,6 +18,7 @@ int Model::predict(int* data) {
     dPolicy << reLU4;
     dPolicy >> softmaxLayer;
     vector<double> prediction = softmaxLayer.result;
+    return prediction;
 
 }
 Model::Model() {

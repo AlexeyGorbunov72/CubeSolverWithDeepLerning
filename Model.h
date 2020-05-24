@@ -22,5 +22,5 @@ class Model {
 
     public:
         Model();
-        int predict(int* data);
+        std::vector<double > predict(int* data);
 };
