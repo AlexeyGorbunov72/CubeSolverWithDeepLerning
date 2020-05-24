@@ -12,8 +12,6 @@ void LayerSoftmax::translate() {
     std::vector<double> buffer;
     for(int i = 0; i < size; i++){
         buffer.push_back(data[i]);
-
     }
-
-    result = softmax(buffer);
+    std::vector<double > result = softmax(buffer);
 }

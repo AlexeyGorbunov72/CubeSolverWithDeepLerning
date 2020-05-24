@@ -27,8 +27,9 @@ vector<double > softmax(vector<double > values){
         result.push_back(exp / sumOfExps);
     }
     for(auto it = result.begin(); it != result.end(); ++it){
-        std::cout << "s: " << *it << std::endl;
+        std::cout << "prediction: " << *it << std::endl;
     }
+
     return result;
 
 }

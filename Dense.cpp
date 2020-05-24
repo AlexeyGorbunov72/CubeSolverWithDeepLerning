@@ -60,9 +60,9 @@ void Dense::operator>>(LayerLeakyReLU reLULayer) {
     reLULayer.translateData();
 }
 void Dense::operator>>(LayerSoftmax softmaxLayer) {
-    std::cout << this->sizeOutLayer << "!" << std::endl;
+    addWeightsOut();
     for(int i = 0; i < 12; i++){
-       softmaxLayer.data[i] = middleLayer[i] * weightsOut[i];
+       softmaxLayer.data[i] = middleLayer[i];
     }
 
     softmaxLayer.translate();
