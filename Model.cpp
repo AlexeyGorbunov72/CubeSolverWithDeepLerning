@@ -18,21 +18,20 @@ int Model::predict(int* data) {
     dPolicy << reLU4;
     dPolicy >> softmaxLayer;
     vector<double> prediction = softmaxLayer.result;
-    for(double & p : prediction){
-        std::cout << p << ", ";
-    }
+
 }
 Model::Model() {
-    d1 = Dense("dense1.txt", 1);
+    d1 = Dense("dense1.txt");
     reLU1 = LayerLeakyReLU(1024);
-    d2 = Dense("dense2.txt", 2);
+    d2 = Dense("dense2.txt");
     reLU2 = LayerLeakyReLU(1024);
-    d3 = Dense("dense3.txt", 3);
+    d3 = Dense("dense3.txt");
     reLU3 = LayerLeakyReLU(1024);
-    d4 = Dense("dense4.txt", 4);
+    d4 = Dense("dense4.txt");
     reLU4 = LayerLeakyReLU(50);
-    dPolicy = Dense("densePolicy.txt", 5);
+    dPolicy = Dense("densePolicy.txt");
     softmaxLayer = LayerSoftmax(12);
+    std::cout << "Model::Model()" << std::endl;
 
 
 

@@ -3,9 +3,17 @@
 //
 
 #pragma once
-class Cube {
 
+#include "iostream"
+#include "string"
+#include <map>
+class Cube {
+    std::map<std::string, int> actionMap;
+    std::map<std::string, std::string> colorMap;
 public:
-    int* data;
+    std::string theCubeData[6][3][3];
+    Cube();
+    int* transformCubeForNN();
+
 };
 

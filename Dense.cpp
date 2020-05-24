@@ -6,12 +6,11 @@
 #include <fstream>
 #include <iostream>
 
-Dense::Dense(string filePath, int id) {
-    identifier = id;
+Dense::Dense(string filePath) {
     ifstream inputFile(filePath);
     inputFile >> this->sizeInLayer >> this->sizeOutLayer;
     weightsIn = new double*[this->sizeInLayer];
-    std::cout << "Dense::" << filePath << " " << sizeInLayer << " " << sizeOutLayer << std::endl;
+    std::cout << "Dense::Dense() #" << filePath[5] << " size: "  << sizeOutLayer << std::endl;
 
     middleLayer = new double[sizeOutLayer];
     for (int i = 0; i < this->sizeInLayer; i++)
@@ -35,7 +34,7 @@ void Dense::addWeightsOut() {
         middleLayer[i] += weightsOut[i];
     }
 }
-void Dense::operator<<(LayerLeakyReLU reLULayer) {
+void Dense::operator<<(LayerLeakyReLU &reLULayer) {
     addWeightsOut();
     for(int i = 0; i < sizeOutLayer; i++){
         for(int j = 0; j < sizeInLayer; j++){
@@ -44,7 +43,7 @@ void Dense::operator<<(LayerLeakyReLU reLULayer) {
     }
 }
 
-void Dense::operator<<(InputLayer inputLayer) {
+void Dense::operator<<(InputLayer &inputLayer) {
     addWeightsOut();
     for(int i = 0; i < sizeOutLayer; i++){
         for(int j = 0; j < sizeInLayer; j++){
@@ -53,13 +52,13 @@ void Dense::operator<<(InputLayer inputLayer) {
     }
 
 }
-void Dense::operator>>(LayerLeakyReLU reLULayer) {
+void Dense::operator>>(LayerLeakyReLU &reLULayer) {
     for(int i = 0; i < sizeOutLayer; i++){
         reLULayer.data[i] = middleLayer[i]; //* weightsOut[i];
     }
     reLULayer.translateData();
 }
-void Dense::operator>>(LayerSoftmax softmaxLayer) {
+void Dense::operator>>(LayerSoftmax &softmaxLayer) {
     addWeightsOut();
     for(int i = 0; i < 12; i++){
        softmaxLayer.data[i] = middleLayer[i];

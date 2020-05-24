@@ -16,20 +16,14 @@ vector<double > softmax(vector<double > values){
     vector<double > result;
 
     for(double & value : values){
-        std::cout << "v: " << value << std::endl;
         sumOfExps += exp(value);
         exps.push_back(exp(value));
 
     }
 
     for(double & exp : exps){
-        std::cout << "e: " << exp << std::endl;
         result.push_back(exp / sumOfExps);
     }
-    for(auto it = result.begin(); it != result.end(); ++it){
-        std::cout << "prediction: " << *it << std::endl;
-    }
-
     return result;
 
 }

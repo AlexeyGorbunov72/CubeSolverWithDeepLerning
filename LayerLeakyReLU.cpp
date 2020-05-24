@@ -13,5 +13,6 @@ void LayerLeakyReLU::translateData() {
 
 LayerLeakyReLU::LayerLeakyReLU(int size) {
     this->size = size;
+    std::cout << "LayerLeakyReLU::LayerLeakyReLU() size: " << size << std::endl;
     data = new double[size];
 }
