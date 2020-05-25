@@ -82,3 +82,20 @@ int* Cube::transformCubeForNN() {
     return flatCube;
 
 }
+//          0 1 2
+// 0 F    0 X X X
+// 1 B    1 X X X
+// 2 U    2 X X X
+// 3 D
+// 4 L
+// 5 R
+void Cube::F() {
+    std::string newCube [6][3][3] = theCubeData;
+    newCube[5][0][0] = theCubeData[2][2][0]; // R SIDE
+    newCube[5][0][1] = theCubeData[2][2][1];
+    newCube[5][0][2] = theCubeData[2][2][2];
+
+    newCube[3][0][0] = theCubeData[5][0][2]; // D SIDE
+    newCube[3][0][1] =
+    newCube[3][0][2] = the c
+}

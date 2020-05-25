@@ -11,7 +11,6 @@ class CubeSolver {
 
 public:
     CubeSolver(){};
-
     void solveTheCube(Cube cube);
 };
 
