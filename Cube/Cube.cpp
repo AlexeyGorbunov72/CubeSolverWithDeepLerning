@@ -90,7 +90,7 @@ int* Cube::transformCubeForNN() {
 // 4 L
 // 5 R
 void Cube::F() {
-    std::string newCube [6][3][3] = theCubeData;
+   /* std::string newCube [6][3][3] = theCubeData;
     newCube[5][0][0] = theCubeData[2][2][0]; // R SIDE
     newCube[5][0][1] = theCubeData[2][2][1];
     newCube[5][0][2] = theCubeData[2][2][2];
@@ -98,4 +98,5 @@ void Cube::F() {
     newCube[3][0][0] = theCubeData[5][0][2]; // D SIDE
     newCube[3][0][1] =
     newCube[3][0][2] = the c
+    */
 }
