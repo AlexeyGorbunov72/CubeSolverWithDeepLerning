@@ -9,22 +9,8 @@
 #include "string"
 int main() {
 
-    std::string cube[6][3][3];
-    for(int i = 0; i < 3; i++){
-        for(int j = 0; j < 3; j++){
-            if(j != 0)
-                cube[0][i][j] = "green";
-            else
-                cube[0][i][j] = "yellow";
-            
-        }
-    }
-
-    CubeRotationSupportForStupidMe hui(cube, 0);
-    std::string* buffer = hui.getRightPartOfSide();
-    for(int i = 0; i < 3; i++){
-        std::cout << buffer[i] << std::endl;
-    }
+    Cube shit;
+    shit.R();
     return 0;
 
 }

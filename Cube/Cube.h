@@ -7,6 +7,7 @@
 #include "iostream"
 #include "string"
 #include <map>
+#include "CubeRotationSupportForStupidMe.h"
 class Cube {
     std::map<std::string, int> actionMap;
     std::map<std::string, std::string> colorMap;
@@ -15,6 +16,7 @@ class Cube {
 public:
     std::string theCubeData[6][3][3];
     Cube();
+    void printCube(std::string cube[6][3][3]);
     void R();
     void Rn();
     void F();
