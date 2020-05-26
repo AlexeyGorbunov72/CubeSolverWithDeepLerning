@@ -10,7 +10,7 @@
 int main() {
 
     Cube shit;
-    shit.R();
+    shit.B();
     return 0;
 
 }
