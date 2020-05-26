@@ -16,19 +16,20 @@ class Cube {
 public:
     std::string theCubeData[6][3][3];
     Cube();
+    Cube(std::string data[6][3][3]);
     void printCube(std::string cube[6][3][3]);
-    void R();
-    void Rn();
-    void F();
-    void Fn();
-    void U();
-    void Un();
-    void B();
-    void Bn();
-    void D();
-    void Dn();
-    void L();
-    void Ln();
+    Cube R();
+    Cube Rn();
+    Cube F();
+    Cube Fn();
+    Cube U();
+    Cube Un();
+    Cube B();
+    Cube Bn();
+    Cube D();
+    Cube Dn();
+    Cube L();
+    Cube Ln();
     int* transformCubeForNN();
 
 };

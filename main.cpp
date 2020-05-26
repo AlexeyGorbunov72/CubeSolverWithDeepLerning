@@ -10,7 +10,9 @@
 int main() {
 
     Cube shit;
-    shit.U();
+    shit = shit.Un();
+    shit.printCube(shit.theCubeData);
+
     return 0;
 
 }
