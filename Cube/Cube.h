@@ -8,11 +8,12 @@
 #include "string"
 #include <map>
 #include "CubeRotationSupportForStupidMe.h"
+#include "vector"
 class Cube {
     std::map<std::string, int> actionMap;
     std::map<std::string, std::string> colorMap;
-    int action;
-
+    std::vector<std::string > historyOfMovements;
+    
 public:
     std::string theCubeData[6][3][3];
     Cube();
