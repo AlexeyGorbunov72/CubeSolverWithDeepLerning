@@ -276,3 +276,91 @@ void Cube::B() {
     }
     printCube(newCube);
 }
+
+void Cube::D() {
+    std::string newCube[6][3][3];
+    CubeRotationSupportForStupidMe redSide(theCubeData, 4);
+    CubeRotationSupportForStupidMe blueSide(theCubeData, 1);
+    CubeRotationSupportForStupidMe orangeSide(theCubeData, 5);
+    CubeRotationSupportForStupidMe whiteSide(theCubeData, 3);
+    CubeRotationSupportForStupidMe greenSide(theCubeData, 0);
+
+    for(int i = 0; i < 6; i++){
+        for(int j = 0; j < 3; j++){
+            for(int k = 0; k < 3; k++){
+                newCube[i][j][k] = theCubeData[i][j][k];
+            }
+        }
+    }
+
+    for(int i = 0; i < 3; i++){
+        newCube[0][2][i] = redSide.getBottomPartOfSide()[i];
+    }
+    for(int i = 0; i < 3; i++){
+        newCube[5][2][i] = greenSide.getBottomPartOfSide()[i];
+    }
+    for(int i = 0; i < 3; i++){
+        newCube[1][2][i] = orangeSide.getBottomPartOfSide()[i];
+    }
+    for(int i = 0; i < 3; i++){
+        newCube[4][2][i] = blueSide.getBottomPartOfSide()[i];
+    }
+
+    for(int i = 0; i < 3; i++){
+        newCube[3][0][i] = whiteSide.getLeftPartOfSide()[2 - i];
+    }
+    for(int i = 0; i < 3; i++){
+        newCube[3][i][2] = whiteSide.getTopPartOfSide()[i];
+    }
+    for(int i = 0; i < 3; i++){
+        newCube[3][2][i] = whiteSide.getRightPartOfSide()[2 - i];
+    }
+    for(int i = 0; i < 3; i++){
+        newCube[3][i][0] = whiteSide.getBottomPartOfSide()[i];
+    }
+    printCube(newCube);
+}
+
+void Cube::U() {
+    std::string newCube[6][3][3];
+    CubeRotationSupportForStupidMe redSide(theCubeData, 4);
+    CubeRotationSupportForStupidMe blueSide(theCubeData, 1);
+    CubeRotationSupportForStupidMe orangeSide(theCubeData, 5);
+    CubeRotationSupportForStupidMe yellowSide(theCubeData, 2);
+    CubeRotationSupportForStupidMe greenSide(theCubeData, 0);
+
+    for(int i = 0; i < 6; i++){
+        for(int j = 0; j < 3; j++){
+            for(int k = 0; k < 3; k++){
+                newCube[i][j][k] = theCubeData[i][j][k];
+            }
+        }
+    }
+
+    for(int i = 0; i < 3; i++){
+        newCube[1][0][i] = redSide.getTopPartOfSide()[i];
+    }
+    for(int i = 0; i < 3; i++){
+        newCube[4][0][i] = greenSide.getTopPartOfSide()[i];
+    }
+    for(int i = 0; i < 3; i++){
+        newCube[0][0][i] = orangeSide.getTopPartOfSide()[i];
+    }
+    for(int i = 0; i < 3; i++){
+        newCube[5][0][i] = blueSide.getTopPartOfSide()[i];
+    }
+
+    for(int i = 0; i < 3; i++){
+        newCube[2][0][i] = yellowSide.getLeftPartOfSide()[2 - i];
+    }
+    for(int i = 0; i < 3; i++){
+        newCube[2][i][2] = yellowSide.getTopPartOfSide()[i];
+    }
+    for(int i = 0; i < 3; i++){
+        newCube[2][2][i] = yellowSide.getRightPartOfSide()[2 - i];
+    }
+    for(int i = 0; i < 3; i++){
+        newCube[2][i][0] = yellowSide.getBottomPartOfSide()[i];
+    }
+    printCube(newCube);
+}
