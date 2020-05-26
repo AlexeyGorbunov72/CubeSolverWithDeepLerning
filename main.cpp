@@ -1,20 +1,19 @@
 #include <iostream>
 
-#include "Model/Model.h"
-#include <iomanip>
-#include <map>
 #include "CubeSolver/CubeSolver.h"
-#include "Cube/Cube.h"
-#include "Cube/CubeRotationSupportForStupidMe.h"
+#include "vector"
+#include "Model/Model.h"
 #include "string"
+#include "iostream"
 int main() {
 
-    vector<int > suka;
-    suka.push_back(1488);
-    for(int & ochko : suka){
-        suka.push_back(2);
+    Cube testCube;
+    testCube = testCube.Rn();
+    CubeSolver solver;
+    std::vector<std::string> result = solver.solveTheCube(testCube);
+    for(string & move : result){
+        std::cout << move << std::endl;
     }
-    std::cout << suka.size();
     return 0;
 
 }

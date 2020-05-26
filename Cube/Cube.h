@@ -19,6 +19,7 @@ public:
     bool isItSolve();
     Cube();
     Cube(std::string data[6][3][3]);
+    Cube doRotation(int idOfRotation);
     void printCube(std::string cube[6][3][3]);
     Cube R();
     Cube Rn();
@@ -34,6 +35,9 @@ public:
     Cube Ln();
     int* transformCubeForNN();
 
+    void setHistory(std::vector<std::string> history){
+        historyOfMovements = history;
+    }
     void appendInHistory(std::string move){
         historyOfMovements.push_back(move);
     }

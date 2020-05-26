@@ -71,6 +71,76 @@ Cube::Cube(std::string data[6][3][3]) {
         }
     }
 }
+/*
+actionMap["F"]  = 0;
+actionMap["B"]  = 1;
+actionMap["U"]  = 2;
+actionMap["D"]  = 3;
+actionMap["L"]  = 4;
+actionMap["R"]  = 5;
+actionMap["F'"] = 6;
+actionMap["B'"] = 7;
+actionMap["U'"] = 8;
+actionMap["D'"] = 9;
+actionMap["L'"] = 10;
+actionMap["R'"] = 11;
+ */
+Cube Cube::doRotation(int idOfRotation) {
+    Cube newCube;
+    newCube.setHistory(historyOfMovements);
+    switch(idOfRotation){
+        case 0:
+            newCube = this->F();
+            newCube.appendInHistory("F");
+            return newCube;
+
+        case 1:
+            newCube = this->B();
+            newCube.appendInHistory("B");
+            return newCube;
+
+        case 2:
+            newCube = this->U();
+            newCube.appendInHistory("U");
+            return newCube;
+        case 3:
+            newCube = this->D();
+            newCube.appendInHistory("D");
+            return newCube;
+        case 4:
+            newCube = this->L();
+            newCube.appendInHistory("L");
+            return newCube;
+        case 5:
+            newCube = this->R();
+            newCube.appendInHistory("R");
+            return newCube;
+        case 6:
+            newCube = this->Fn();
+            newCube.appendInHistory("F'");
+            return newCube;
+        case 7:
+            newCube = this->Bn();
+            newCube.appendInHistory("B'");
+            return newCube;
+        case 8:
+            newCube = this->Un();
+            newCube.appendInHistory("U'");
+            return newCube;
+        case 9:
+            newCube = this->Dn();
+            newCube.appendInHistory("D'");
+            return newCube;
+        case 10:
+            newCube = this->Ln();
+            newCube.appendInHistory("L'");
+            return newCube;
+        case 11:
+            newCube = this->Rn();
+            newCube.appendInHistory("R'");
+            return newCube;
+    }
+}
 bool Cube::isItSolve() {
     bool isSolve = true;
     for(int i = 0; i < 6; i++){
