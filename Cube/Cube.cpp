@@ -71,7 +71,19 @@ Cube::Cube(std::string data[6][3][3]) {
         }
     }
 }
-
+bool Cube::isItSolve() {
+    bool isSolve = true;
+    for(int i = 0; i < 6; i++){
+        for(int j = 0; j < 2; j++){
+            for(int k = 0; k < 2; k++){
+                if(theCubeData[j][k] != theCubeData[j + 1][k + 1] || theCubeData[j][k] != theCubeData[j + 1][k] || theCubeData[j][k] != theCubeData[j][k + 1]){
+                    isSolve = false;
+                }
+            }
+        }
+    }
+    return isSolve;
+}
 int* Cube::transformCubeForNN() {
     int* flatCube = new int[324];
     int counter = 0;

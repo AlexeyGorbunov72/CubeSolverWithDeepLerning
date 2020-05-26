@@ -17,7 +17,8 @@ void CubeSolver::solveTheCube(Cube cube) {
         for(Cube& cubeToFlat: sequenceVector){
             int* buffer = cubeToFlat.transformCubeForNN();
             std::vector<double > prediction = model.predict(buffer);
-            policy.push_back(prediction);
+            std::vector<int > topTwoMoves = model.topTwoPredictions(prediction);
+
         }
         std::vector<Cube > newSequnceVector;
 

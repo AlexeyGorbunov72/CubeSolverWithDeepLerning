@@ -13,9 +13,10 @@ class Cube {
     std::map<std::string, int> actionMap;
     std::map<std::string, std::string> colorMap;
     std::vector<std::string > historyOfMovements;
-    
+
 public:
     std::string theCubeData[6][3][3];
+    bool isItSolve();
     Cube();
     Cube(std::string data[6][3][3]);
     void printCube(std::string cube[6][3][3]);
@@ -32,6 +33,13 @@ public:
     Cube L();
     Cube Ln();
     int* transformCubeForNN();
+
+    void appendInHistory(std::string move){
+        historyOfMovements.push_back(move);
+    }
+    std::vector<std::string> getHistory(){
+        return historyOfMovements;
+    }
 
 };
 

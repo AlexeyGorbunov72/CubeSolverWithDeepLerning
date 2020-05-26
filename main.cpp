@@ -9,10 +9,12 @@
 #include "string"
 int main() {
 
-    Cube shit;
-    shit = shit.Un();
-    shit.printCube(shit.theCubeData);
-
+    vector<int > suka;
+    suka.push_back(1488);
+    for(int & ochko : suka){
+        suka.push_back(2);
+    }
+    std::cout << suka.size();
     return 0;
 
 }

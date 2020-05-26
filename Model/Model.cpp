@@ -34,6 +34,19 @@ Model::Model() {
     softmaxLayer = LayerSoftmax(12);
     std::cout << "Model::Model()" << std::endl;
 
-
-
+}
+std::vector<int > Model::topTwoPredictions(std::vector<double> prediction) {
+    int max1, max2;
+    max1 = -1;
+    max2 = -1;
+    for(int i = 0; i < 12; i++){
+        if(prediction[i] > max1){
+            max2 = max1;
+            max1 = i;
+        }
+    }
+    vector<int > result;
+    result.push_back(max2);
+    result.push_back(max1);
+    return result;
 }

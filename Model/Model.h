@@ -22,5 +22,6 @@ class Model {
 
     public:
         Model();
+        std::vector<int > topTwoPredictions(std::vector<double> prediction);
         std::vector<double > predict(int* data);
 };
