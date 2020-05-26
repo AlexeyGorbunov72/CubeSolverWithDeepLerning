@@ -34,7 +34,8 @@ public:
     Cube L();
     Cube Ln();
     int* transformCubeForNN();
-
+    void testDoRotation(int index);
+    void operator=(Cube other);
     void setHistory(std::vector<std::string> history){
         historyOfMovements = history;
     }

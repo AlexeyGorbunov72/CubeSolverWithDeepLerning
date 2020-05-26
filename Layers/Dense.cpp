@@ -3,8 +3,7 @@
 //
 
 #include "Dense.h"
-#include <fstream>
-#include <iostream>
+
 
 Dense::Dense(string filePath) {
     ifstream inputFile(filePath);
@@ -27,7 +26,6 @@ Dense::Dense(string filePath) {
     }
 
 
-
 }
 void Dense::addWeightsOut() {
     for(int i = 0; i < sizeOutLayer; i++){
@@ -42,7 +40,6 @@ void Dense::operator<<(LayerLeakyReLU &reLULayer) {
         }
     }
 }
-
 void Dense::operator<<(InputLayer &inputLayer) {
     addWeightsOut();
     for(int i = 0; i < sizeOutLayer; i++){
@@ -57,6 +54,7 @@ void Dense::operator>>(LayerLeakyReLU &reLULayer) {
         reLULayer.data[i] = middleLayer[i]; //* weightsOut[i];
     }
     reLULayer.translateData();
+    cleanUp();
 }
 void Dense::operator>>(LayerSoftmax &softmaxLayer) {
     addWeightsOut();
@@ -65,6 +63,13 @@ void Dense::operator>>(LayerSoftmax &softmaxLayer) {
     }
 
     softmaxLayer.translate();
+    cleanUp();
+}
+
+void Dense::cleanUp() {
+    for(int i = 0; i < sizeOutLayer; i++){
+        middleLayer[i] = 0;
+    }
 }
 /*
 

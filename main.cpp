@@ -7,13 +7,17 @@
 #include "iostream"
 int main() {
 
-    Cube testCube;
-    testCube = testCube.Rn();
+    Cube test;
+    Cube anus = test.U();
+    Cube ochko = anus.L();
+    Cube ochko2 = ochko.D();
+    ochko.printCube(ochko2.theCubeData);
     CubeSolver solver;
-    std::vector<std::string> result = solver.solveTheCube(testCube);
-    for(string & move : result){
-        std::cout << move << std::endl;
-    }
-    return 0;
+    std::cout << "- -- - - - - -  - - - - - - ";
 
+    Cube answer = solver.solveTheCube(ochko2);
+    answer.printCube(answer.theCubeData);
+    for(string& suka: answer.getHistory()){
+        std::cout << suka << std::endl;
+    }
 }

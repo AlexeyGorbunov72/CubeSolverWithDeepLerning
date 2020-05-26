@@ -18,6 +18,9 @@ vector<double > Model::predict(int* data) {
     dPolicy << reLU4;
     dPolicy >> softmaxLayer;
     vector<double> prediction = softmaxLayer.result;
+    for(int i = 0; i < 12; i++){
+        std::cout << "predication = " << prediction[i] << std::endl;
+    }
     return prediction;
 
 }
@@ -36,17 +39,30 @@ Model::Model() {
 
 }
 std::vector<int > Model::topTwoPredictions(std::vector<double> prediction) {
-    int max1, max2;
-    max1 = -1;
-    max2 = -1;
-    for(int i = 0; i < 12; i++){
-        if(prediction[i] > max1){
-            max2 = max1;
-            max1 = i;
+    double max1 = -1;
+    double max2 = -1;
+    int max2_index = -1;int max1_index = -1;
+
+    for (int i = 0; i < 12; i++)
+    {
+        if (prediction[i] > max1)
+        {
+            max1_index = i;
+            max1 = prediction[i];
+        }
+    }
+
+    for (int i = 0; i < 12; i++)
+    {
+
+        if (prediction[i] > max2 && max1_index != i)
+        {
+            max2_index = i;
+            max2 = prediction[i];
         }
     }
     vector<int > result;
-    result.push_back(max2);
-    result.push_back(max1);
+    result.push_back(max1_index);
+    result.push_back(max2_index);
     return result;
 }

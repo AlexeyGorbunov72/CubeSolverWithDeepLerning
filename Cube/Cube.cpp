@@ -63,6 +63,12 @@ Cube::Cube() {
 }
 
 Cube::Cube(std::string data[6][3][3]) {
+    colorMap["green"]   = "100000";
+    colorMap["blue"]    = "010000";
+    colorMap["yellow"]  = "001000";
+    colorMap["red"]     = "000100";
+    colorMap["orange"]  = "000010";
+    colorMap["white"]   = "000001";
     for(int i = 0; i < 6; i++){
         for(int j = 0; j < 3; j++){
             for(int k = 0; k < 3; k++){
@@ -71,72 +77,77 @@ Cube::Cube(std::string data[6][3][3]) {
         }
     }
 }
-/*
-actionMap["F"]  = 0;
-actionMap["B"]  = 1;
-actionMap["U"]  = 2;
-actionMap["D"]  = 3;
-actionMap["L"]  = 4;
-actionMap["R"]  = 5;
-actionMap["F'"] = 6;
-actionMap["B'"] = 7;
-actionMap["U'"] = 8;
-actionMap["D'"] = 9;
-actionMap["L'"] = 10;
-actionMap["R'"] = 11;
- */
+
+void Cube::operator=(Cube other) {
+    std::cout <<"1488 228 " <<  std::endl;
+    for(int i = 0; i <6; i++){
+        for(int j = 0; j < 3; j++){
+            for(int k = 0; k < 3; k++){
+                theCubeData[i][j][k] = other.theCubeData[i][j][k];
+            }
+        }
+    }
+    historyOfMovements = other.getHistory();
+}
+
 Cube Cube::doRotation(int idOfRotation) {
-    Cube newCube;
+    Cube newCube(theCubeData);
     newCube.setHistory(historyOfMovements);
+    for(int i = 0; i < newCube.getHistory().size(); i++){
+        std::cout <<"in f " << newCube.getHistory()[i]<< std::endl;
+    }
     switch(idOfRotation){
         case 0:
-            newCube = this->F();
+            newCube = F();
             newCube.appendInHistory("F");
             return newCube;
 
         case 1:
-            newCube = this->B();
+            newCube = B();
             newCube.appendInHistory("B");
             return newCube;
 
         case 2:
-            newCube = this->U();
+            newCube = U();
             newCube.appendInHistory("U");
             return newCube;
         case 3:
-            newCube = this->D();
+            newCube = D();
             newCube.appendInHistory("D");
             return newCube;
         case 4:
-            newCube = this->L();
+            newCube = L();
             newCube.appendInHistory("L");
             return newCube;
         case 5:
-            newCube = this->R();
+            newCube = R();
             newCube.appendInHistory("R");
             return newCube;
         case 6:
-            newCube = this->Fn();
+            newCube = Fn();
             newCube.appendInHistory("F'");
             return newCube;
         case 7:
-            newCube = this->Bn();
+            newCube = Bn();
             newCube.appendInHistory("B'");
             return newCube;
         case 8:
-            newCube = this->Un();
+            newCube = Un();
+            std::cout << "U'" << std::endl;
+
             newCube.appendInHistory("U'");
+            std::cout << newCube.getHistory()[0] << std::endl;
             return newCube;
         case 9:
-            newCube = this->Dn();
+            newCube = Dn();
             newCube.appendInHistory("D'");
             return newCube;
         case 10:
-            newCube = this->Ln();
+            newCube = Ln();
             newCube.appendInHistory("L'");
             return newCube;
         case 11:
-            newCube = this->Rn();
+            newCube = Rn();
             newCube.appendInHistory("R'");
             return newCube;
     }
@@ -146,7 +157,7 @@ bool Cube::isItSolve() {
     for(int i = 0; i < 6; i++){
         for(int j = 0; j < 2; j++){
             for(int k = 0; k < 2; k++){
-                if(theCubeData[j][k] != theCubeData[j + 1][k + 1] || theCubeData[j][k] != theCubeData[j + 1][k] || theCubeData[j][k] != theCubeData[j][k + 1]){
+                if(theCubeData[i][j][k] != theCubeData[i][j + 1][k + 1] || theCubeData[i][j][k] != theCubeData[i][j + 1][k] || theCubeData[i][j][k] != theCubeData[i][j][k + 1]){
                     isSolve = false;
                 }
             }
@@ -158,18 +169,15 @@ int* Cube::transformCubeForNN() {
     int* flatCube = new int[324];
     int counter = 0;
     for(int i = 0; i < 6; i++){
-
         for(int j = 0; j < 3; j++){
             for(int k = 0; k < 3; k++){
                 for(int stringPos = 0; stringPos < 6; stringPos++){
+
                     flatCube[counter] = colorMap[theCubeData[i][j][k]][stringPos] - '0';
                     counter++;
                 }
             }
         }
-    }
-    for(int i = 0; i < 324; i++){
-        std::cout << flatCube[i] << ", ";
     }
     return flatCube;
 
@@ -511,3 +519,4 @@ Cube Cube::Un() {
     }
     return bufferCube;
 }
+

@@ -8,6 +8,8 @@
 #include <cstring>
 #include "InputLayer.h"
 #include "LayerSoftmax.h"
+#include <fstream>
+#include <iostream>
 using namespace std;
 class Dense {
     int sizeInLayer;
@@ -15,7 +17,7 @@ class Dense {
     void flowIntoOutLayer();
     void loadDataIntoMiddleLayer();
     void addWeightsOut();
-
+    void cleanUp();
 public:
     double** weightsIn;
     double* weightsOut;

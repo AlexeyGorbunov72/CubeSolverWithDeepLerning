@@ -11,7 +11,7 @@ class CubeSolver {
 
 public:
     CubeSolver(){};
-    std::vector<string > solveTheCube(Cube cube);
+    Cube solveTheCube(Cube cube);
 };
 
 
