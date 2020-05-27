@@ -16,7 +16,4 @@ void LayerSoftmax::translate() {
     }
 
     result = softmax(buffer);
-    for(int i = 0; i < 12; i++){
-        std::cout << result[i] << std::endl;
-    }
 }

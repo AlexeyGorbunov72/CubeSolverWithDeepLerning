@@ -78,8 +78,13 @@ Cube::Cube(std::string data[6][3][3]) {
     }
 }
 
+void Cube::printHistory() {
+    for(int i = 0; i < historyOfMovements.size(); i++){
+        std::cout << i << ": " << historyOfMovements[i] << std::endl;
+    }
+}
 void Cube::operator=(Cube other) {
-    std::cout <<"1488 228 " <<  std::endl;
+
     for(int i = 0; i <6; i++){
         for(int j = 0; j < 3; j++){
             for(int k = 0; k < 3; k++){
@@ -87,15 +92,15 @@ void Cube::operator=(Cube other) {
             }
         }
     }
+    for(int i = 0; i < other.getHistory().size(); i++ ){
+        historyOfMovements.push_back(other.getHistory()[i]);
+    }
     historyOfMovements = other.getHistory();
 }
 
 Cube Cube::doRotation(int idOfRotation) {
     Cube newCube(theCubeData);
     newCube.setHistory(historyOfMovements);
-    for(int i = 0; i < newCube.getHistory().size(); i++){
-        std::cout <<"in f " << newCube.getHistory()[i]<< std::endl;
-    }
     switch(idOfRotation){
         case 0:
             newCube = F();
@@ -133,10 +138,7 @@ Cube Cube::doRotation(int idOfRotation) {
             return newCube;
         case 8:
             newCube = Un();
-            std::cout << "U'" << std::endl;
-
             newCube.appendInHistory("U'");
-            std::cout << newCube.getHistory()[0] << std::endl;
             return newCube;
         case 9:
             newCube = Dn();

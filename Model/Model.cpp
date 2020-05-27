@@ -18,9 +18,6 @@ vector<double > Model::predict(int* data) {
     dPolicy << reLU4;
     dPolicy >> softmaxLayer;
     vector<double> prediction = softmaxLayer.result;
-    for(int i = 0; i < 12; i++){
-        std::cout << "predication = " << prediction[i] << std::endl;
-    }
     return prediction;
 
 }
