@@ -15,6 +15,7 @@ class Cube {
     std::vector<std::string > historyOfMovements;
 
 public:
+    std::vector<int > getHistoryForCubikRubics();
     std::string theCubeData[6][3][3];
     bool isItSolve();
     Cube();

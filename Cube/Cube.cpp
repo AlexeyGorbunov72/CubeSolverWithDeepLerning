@@ -78,6 +78,60 @@ Cube::Cube(std::string data[6][3][3]) {
     }
 }
 
+std::vector<int > Cube::getHistoryForCubikRubics() {
+    std::vector<int > result;
+    for(int i = 0; i < historyOfMovements.size(); i++){
+        if(historyOfMovements[i] == "U"){
+            result.push_back(3);
+        }
+        if(historyOfMovements[i] == "R"){
+            result.push_back(5);
+        }
+        if(historyOfMovements[i] == "L"){
+            result.push_back(4);
+        }
+        if(historyOfMovements[i] == "B"){
+            result.push_back(0);
+        }
+        if(historyOfMovements[i] == "D"){
+            result.push_back(2);
+        }
+        if(historyOfMovements[i] == "F"){
+            result.push_back(1);
+        }
+        if(historyOfMovements[i] == "U'"){
+            result.push_back(3);
+            result.push_back(3);
+            result.push_back(3);
+        }
+        if(historyOfMovements[i] == "R'"){
+            result.push_back(5);
+            result.push_back(5);
+            result.push_back(5);
+        }
+        if(historyOfMovements[i] == "L'"){
+            result.push_back(4);
+            result.push_back(4);
+            result.push_back(4);
+        }
+        if(historyOfMovements[i] == "B'"){
+            result.push_back(0);
+            result.push_back(0);
+            result.push_back(0);
+        }
+        if(historyOfMovements[i] == "D'"){
+            result.push_back(2);
+            result.push_back(2);
+            result.push_back(2);
+        }
+        if(historyOfMovements[i] == "F'"){
+            result.push_back(1);
+            result.push_back(1);
+            result.push_back(1);
+        }
+    }
+    return result;
+}
 void Cube::printHistory() {
     for(int i = 0; i < historyOfMovements.size(); i++){
         std::cout << i << ": " << historyOfMovements[i] << std::endl;
