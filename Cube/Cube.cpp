@@ -95,7 +95,6 @@ void Cube::operator=(Cube other) {
     for(int i = 0; i < other.getHistory().size(); i++ ){
         historyOfMovements.push_back(other.getHistory()[i]);
     }
-    historyOfMovements = other.getHistory();
 }
 
 Cube Cube::doRotation(int idOfRotation) {
