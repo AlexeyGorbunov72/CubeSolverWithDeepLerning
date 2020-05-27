@@ -34,6 +34,7 @@ public:
     Cube L();
     Cube Ln();
     int* transformCubeForNN();
+    Cube scrambleCube(int steps);
     void testDoRotation(int index);
     void printHistory();
     void operator=(Cube other);

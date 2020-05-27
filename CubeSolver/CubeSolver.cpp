@@ -8,33 +8,29 @@ Cube CubeSolver::solveTheCube(Cube cube) {
     std::vector<std::string > answer;
     std::vector<Cube> sequenceVector;
     std::vector<Cube> bufferSequenceVector;
-    std::vector<int* > flatsVector;
-    std::vector<std::vector<double > > policy;
 
-    //std::vector<std::vector<double >, Cube> policyAndCubes;
     sequenceVector.push_back(cube);
     for(int j = 0; j < 100; j++){
-        flatsVector.clear();
-        policy.clear();
+
         int sizeOfVector = sequenceVector.size();
         for(int i = 0; i < sizeOfVector; i++){
+            std::cout << "size of sequence: " << sizeOfVector << std::endl;
             Cube cubeToFlat = sequenceVector[i];
             int* buffer = cubeToFlat.transformCubeForNN();
             std::vector<double > prediction = model.predict(buffer);
             std::vector<int > topTwoMoves = model.topTwoPredictions(prediction);
+
             bufferSequenceVector.push_back(cubeToFlat.doRotation(topTwoMoves[0]));
             (*(bufferSequenceVector.end() - 1)).printHistory();
-            if((*(bufferSequenceVector.end() - 1)).isItSolve()){
-                std::cout << "sobral 0";
 
+            if((*(bufferSequenceVector.end() - 1)).isItSolve()){
                 return (*(bufferSequenceVector.end() - 1));
             }
 
             bufferSequenceVector.push_back(cubeToFlat.doRotation(topTwoMoves[1]));
             (*(bufferSequenceVector.end() - 1)).printHistory();
-            if((*(bufferSequenceVector.end() - 1)).isItSolve()){
-                std::cout << "sobral 1";
 
+            if((*(bufferSequenceVector.end() - 1)).isItSolve()){
                 return (*(bufferSequenceVector.end() - 1));
             }
 

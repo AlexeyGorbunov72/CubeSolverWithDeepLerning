@@ -194,7 +194,7 @@ void Cube::printCube(std::string cube[6][3][3]){
         }
     }
 }
-//               0 1 2
+//                 0 1 2
 // 0 F  g        0 X X X
 // 1 B  b        1 X X X
 // 2 U  y        2 X X X
@@ -311,10 +311,10 @@ Cube Cube::R() {
     }
 
     for(int i = 0; i < 3; i++){
-        secondCube.theCubeData[2][i][2] = greenSide.getLeftPartOfSide()[i];
+        secondCube.theCubeData[2][i][2] = greenSide.getRightPartOfSide()[i];
     }
     for(int i = 0; i < 3; i++){
-        secondCube.theCubeData[0][i][2] = whiteSide.getLeftPartOfSide()[i];
+        secondCube.theCubeData[0][i][2] = whiteSide.getRightPartOfSide()[i];
     }
     for(int i = 0; i < 3; i++){
         secondCube.theCubeData[1][i][0] = yellowSide.getRightPartOfSide()[2 - i];
@@ -362,10 +362,10 @@ Cube Cube::B() {
         secondCube.theCubeData[3][2][i] = redSide.getLeftPartOfSide()[i];
     }
     for(int i = 0; i < 3; i++){
-        secondCube.theCubeData[5][i][2] = whiteSide.getRightPartOfSide()[2 - i];
+        secondCube.theCubeData[5][i][2] = whiteSide.getBottomPartOfSide()[2 - i];
     }
     for(int i = 0; i < 3; i++){
-        secondCube.theCubeData[4][i][0] = yellowSide.getLeftPartOfSide()[2 - i];
+        secondCube.theCubeData[4][i][0] = yellowSide.getTopPartOfSide()[2 - i];
     }
 
     for(int i = 0; i < 3; i++){
@@ -521,3 +521,12 @@ Cube Cube::Un() {
     return bufferCube;
 }
 
+Cube Cube::scrambleCube(int steps) {
+    Cube cube;
+    for(int i = 0; i < steps; i++){
+        cube = cube.doRotation(rand() % 12);
+    }
+    std::vector<std::string > empty;
+    cube.setHistory(empty);
+    return cube;
+}
