@@ -8,14 +8,22 @@ Cube CubeSolver::solveTheCube(Cube cube) {
     std::vector<std::string > answer;
     std::vector<Cube> sequenceVector;
     std::vector<Cube> bufferSequenceVector;
+    map<string, bool> existsCubes;
 
     sequenceVector.push_back(cube);
     for(int j = 0; j < 100; j++){
 
         int sizeOfVector = sequenceVector.size();
         for(int i = 0; i < sizeOfVector; i++){
+
             std::cout << "size of sequence: " << sizeOfVector << std::endl;
             Cube cubeToFlat = sequenceVector[i];
+            if(existsCubes[cubeToFlat.transformToString()] != NULL){
+                continue;
+            }
+            else{
+                existsCubes[cubeToFlat.transformToString()] = true;
+            }
             int* buffer = cubeToFlat.transformCubeForNN();
             std::vector<double > prediction = model.predict(buffer);
             std::vector<int > topTwoMoves = model.topTwoPredictions(prediction);

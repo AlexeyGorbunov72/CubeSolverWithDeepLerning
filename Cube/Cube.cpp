@@ -78,6 +78,22 @@ Cube::Cube(std::string data[6][3][3]) {
     }
 }
 
+void Cube::test(int side) {
+
+    CubeRotationSupportForStupidMe theSide(theCubeData, side);
+    for(int i = 0; i < 3; i++){
+        theCubeData[side][0][i] = theSide.getLeftPartOfSide()[2 - i];
+    }
+    for(int i = 0; i < 3; i++){
+        theCubeData[side][i][2] = theSide.getTopPartOfSide()[i];
+    }
+    for(int i = 0; i < 3; i++){
+        theCubeData[side][2][i] = theSide.getRightPartOfSide()[2 - i];
+    }
+    for(int i = 0; i < 3; i++){
+        theCubeData[side][i][0] = theSide.getBottomPartOfSide()[i];
+    }
+}
 std::vector<int > Cube::getHistoryForCubikRubics() {
     std::vector<int > result;
     for(int i = 0; i < historyOfMovements.size(); i++){
@@ -149,6 +165,18 @@ void Cube::operator=(Cube other) {
     for(int i = 0; i < other.getHistory().size(); i++ ){
         historyOfMovements.push_back(other.getHistory()[i]);
     }
+}
+
+std::string Cube::transformToString() {
+    std::string result;
+    for(int i = 0; i  <6; i++){
+        for(int j = 0; j < 3; j++){
+            for(int k = 0; k < 3; k++){
+                result += theCubeData[i][j][k][0];
+            }
+        }
+    }
+    return result;
 }
 
 Cube Cube::doRotation(int idOfRotation) {
@@ -577,10 +605,13 @@ Cube Cube::Un() {
 
 Cube Cube::scrambleCube(int steps) {
     Cube cube;
+    srand(time(NULL));
+    std::vector<Cube > sequence;
+    sequence.push_back(cube);
     for(int i = 0; i < steps; i++){
-        cube = cube.doRotation(rand() % 12);
+        sequence.push_back((*(sequence.end() - 1)).doRotation(rand() % 12));
     }
     std::vector<std::string > empty;
     cube.setHistory(empty);
-    return cube;
+    return *(sequence.end() - 1);
 }

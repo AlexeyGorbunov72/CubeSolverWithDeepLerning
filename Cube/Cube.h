@@ -18,6 +18,8 @@ public:
     std::vector<int > getHistoryForCubikRubics();
     std::string theCubeData[6][3][3];
     bool isItSolve();
+    void test(int side);
+    std::string transformToString();
     Cube();
     Cube(std::string data[6][3][3]);
     Cube doRotation(int idOfRotation);

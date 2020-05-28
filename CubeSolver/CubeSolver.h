@@ -7,6 +7,7 @@
 #include "../Model/Model.h"
 #include "iostream"
 #include <vector>
+#include "map"
 class CubeSolver {
 
 public:
