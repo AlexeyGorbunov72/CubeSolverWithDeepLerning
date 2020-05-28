@@ -3,8 +3,8 @@
 //
 
 #include "CubeSolver.h"
-Cube CubeSolver::solveTheCube(Cube cube) {
-    Model model;
+Cube CubeSolver::solveTheCube(Cube cube, Model& model) {
+
     std::vector<std::string > answer;
     std::vector<Cube> sequenceVector;
     std::vector<Cube> bufferSequenceVector;

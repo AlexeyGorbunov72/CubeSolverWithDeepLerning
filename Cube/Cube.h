@@ -9,12 +9,15 @@
 #include <map>
 #include "CubeRotationSupportForStupidMe.h"
 #include "vector"
+#include "../Graphix/Color.h"
+#include "../Graphix/RubikCube.h"
 class Cube {
     std::map<std::string, int> actionMap;
     std::map<std::string, std::string> colorMap;
     std::vector<std::string > historyOfMovements;
 
 public:
+    void operator=(RubikCube other);
     std::vector<int > getHistoryForCubikRubics();
     std::string theCubeData[6][3][3];
     bool isItSolve();

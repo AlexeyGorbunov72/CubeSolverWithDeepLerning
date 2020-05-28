@@ -1,4 +1,4 @@
-#include "../../../Downloads/FragmentCube.h"
+#include "../Graphix/FragmentCube.h"
 
 FragmentCube::FragmentCube(float size) : _size(size) {}
 

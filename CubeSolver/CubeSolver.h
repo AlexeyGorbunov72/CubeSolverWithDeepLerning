@@ -12,7 +12,7 @@ class CubeSolver {
 
 public:
     CubeSolver(){};
-    Cube solveTheCube(Cube cube);
+    Cube solveTheCube(Cube cube, Model& model);
 };
 
 

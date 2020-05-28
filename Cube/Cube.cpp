@@ -96,59 +96,161 @@ void Cube::test(int side) {
 }
 std::vector<int > Cube::getHistoryForCubikRubics() {
     std::vector<int > result;
-    for(int i = 0; i < historyOfMovements.size(); i++){
-        if(historyOfMovements[i] == "U"){
+    for (int i = 0; i < historyOfMovements.size(); i++) {
+        if (historyOfMovements[i] == "U") {
             result.push_back(0);
         }
-        if(historyOfMovements[i] == "R"){
+        if (historyOfMovements[i] == "R") {
             result.push_back(5);
             result.push_back(5);
             result.push_back(5);
         }
-        if(historyOfMovements[i] == "L"){
+        if (historyOfMovements[i] == "L") {
             result.push_back(4);
         }
-        if(historyOfMovements[i] == "B"){
+        if (historyOfMovements[i] == "B") {
             result.push_back(2);
         }
-        if(historyOfMovements[i] == "D"){
+        if (historyOfMovements[i] == "D") {
             result.push_back(1);
             result.push_back(1);
             result.push_back(1);
         }
-        if(historyOfMovements[i] == "F"){
+        if (historyOfMovements[i] == "F") {
             result.push_back(3);
             result.push_back(3);
             result.push_back(3);
         }
-        if(historyOfMovements[i] == "U'"){
+        if (historyOfMovements[i] == "U'") {
             result.push_back(0);
             result.push_back(0);
             result.push_back(0);
         }
-        if(historyOfMovements[i] == "R'"){
+        if (historyOfMovements[i] == "R'") {
             result.push_back(5);
 
         }
-        if(historyOfMovements[i] == "L'"){
+        if (historyOfMovements[i] == "L'") {
             result.push_back(4);
             result.push_back(4);
             result.push_back(4);
         }
-        if(historyOfMovements[i] == "B'"){
+        if (historyOfMovements[i] == "B'") {
             result.push_back(2);
             result.push_back(2);
             result.push_back(2);
         }
-        if(historyOfMovements[i] == "D'"){
+        if (historyOfMovements[i] == "D'") {
             result.push_back(1);
         }
-        if(historyOfMovements[i] == "F'"){
+        if (historyOfMovements[i] == "F'") {
             result.push_back(3);
 
         }
     }
     return result;
+}
+std::string getColor(int color)
+{
+    switch (color)
+    {
+        case WHITE:
+            return "white";
+        case YELLOW:
+            return "yellow";
+        case GREEN:
+            return "green";
+        case PINK:
+            return "red";
+        case BLUE:
+            return "blue";
+        case ORANGE:
+            return "orange";
+        default:
+            break;
+    }
+}
+void Cube::operator=(RubikCube other)
+{
+    // green
+    theCubeData[0][0][0] = getColor(other.getColorDetails(0, 2, 0)[3]);
+    theCubeData[0][0][1] = getColor(other.getColorDetails(1, 2, 0)[3]);
+    theCubeData[0][0][2] = getColor(other.getColorDetails(2, 2, 0)[3]);
+
+    theCubeData[0][1][0] = getColor(other.getColorDetails(0, 2, 1)[3]);
+    theCubeData[0][1][1] = getColor(other.getColorDetails(1, 2, 1)[3]);
+    theCubeData[0][1][2] = getColor(other.getColorDetails(2, 2, 1)[3]);
+
+    theCubeData[0][2][0] = getColor(other.getColorDetails(0, 2, 2)[3]);
+    theCubeData[0][2][1] = getColor(other.getColorDetails(1, 2, 2)[3]);
+    theCubeData[0][2][2] = getColor(other.getColorDetails(2, 2, 2)[3]);
+
+    // yellow
+    theCubeData[2][0][0] = getColor(other.getColorDetails(0, 0, 0)[1]);
+    theCubeData[2][0][1] = getColor(other.getColorDetails(1, 0, 0)[1]);
+    theCubeData[2][0][2] = getColor(other.getColorDetails(2, 0, 0)[1]);
+
+    theCubeData[2][1][0] = getColor(other.getColorDetails(0, 1, 0)[1]);
+    theCubeData[2][1][1] = getColor(other.getColorDetails(1, 1, 0)[1]);
+    theCubeData[2][1][2] = getColor(other.getColorDetails(2, 1, 0)[1]);
+
+    theCubeData[2][2][0] = getColor(other.getColorDetails(0, 2, 0)[1]);
+    theCubeData[2][2][1] = getColor(other.getColorDetails(1, 2, 0)[1]);
+    theCubeData[2][2][2] = getColor(other.getColorDetails(2, 2, 0)[1]);
+
+    // orange
+    theCubeData[5][0][0] = getColor(other.getColorDetails(2, 2, 0)[5]);
+    theCubeData[5][0][1] = getColor(other.getColorDetails(2, 1, 0)[5]);
+    theCubeData[5][0][2] = getColor(other.getColorDetails(2, 0, 0)[5]);
+
+    theCubeData[5][1][0] = getColor(other.getColorDetails(2, 2, 1)[5]);
+    theCubeData[5][1][1] = getColor(other.getColorDetails(2, 1, 1)[5]);
+    theCubeData[5][1][2] = getColor(other.getColorDetails(2, 0, 1)[5]);
+
+    theCubeData[5][2][0] = getColor(other.getColorDetails(2, 2, 2)[5]);
+    theCubeData[5][2][1] = getColor(other.getColorDetails(2, 1, 2)[5]);
+    theCubeData[5][2][2] = getColor(other.getColorDetails(2, 0, 2)[5]);
+
+    //red
+    theCubeData[4][0][0] = getColor(other.getColorDetails(0, 0, 0)[4]);
+    theCubeData[4][0][1] = getColor(other.getColorDetails(0, 1, 0)[4]);
+    theCubeData[4][0][2] = getColor(other.getColorDetails(0, 2, 0)[4]);
+
+    theCubeData[4][1][0] = getColor(other.getColorDetails(0, 0, 1)[4]);
+    theCubeData[4][1][1] = getColor(other.getColorDetails(0, 1, 1)[4]);
+    theCubeData[4][1][2] = getColor(other.getColorDetails(0, 2, 1)[4]);
+
+    theCubeData[4][2][0] = getColor(other.getColorDetails(0, 0, 2)[4]);
+    theCubeData[4][2][1] = getColor(other.getColorDetails(0, 1, 2)[4]);
+    theCubeData[4][2][2] = getColor(other.getColorDetails(0, 2, 2)[4]);
+
+    //white
+    theCubeData[3][0][0] = getColor(other.getColorDetails(0, 2, 2)[0]);
+    theCubeData[3][0][1] = getColor(other.getColorDetails(1, 2, 2)[0]);
+    theCubeData[3][0][2] = getColor(other.getColorDetails(2, 2, 2)[0]);
+
+    theCubeData[3][1][0] = getColor(other.getColorDetails(0, 1, 2)[0]);
+    theCubeData[3][1][1] = getColor(other.getColorDetails(1, 1, 2)[0]);
+    theCubeData[3][1][2] = getColor(other.getColorDetails(2, 1, 2)[0]);
+
+    theCubeData[3][2][0] = getColor(other.getColorDetails(0, 0, 2)[0]);
+    theCubeData[3][2][1] = getColor(other.getColorDetails(1, 0, 2)[0]);
+    theCubeData[3][2][2] = getColor(other.getColorDetails(2, 0, 2)[0]);
+
+    //blue
+    theCubeData[1][0][0] = getColor(other.getColorDetails(2, 0, 0)[2]);
+    theCubeData[1][0][1] = getColor(other.getColorDetails(1, 0, 0)[2]);
+    theCubeData[1][0][2] = getColor(other.getColorDetails(0, 0, 0)[2]);
+
+    theCubeData[1][1][0] = getColor(other.getColorDetails(2, 0, 1)[2]);
+    theCubeData[1][1][1] = getColor(other.getColorDetails(1, 0, 1)[2]);
+    theCubeData[1][1][2] = getColor(other.getColorDetails(0, 0, 1)[2]);
+
+    theCubeData[1][2][0] = getColor(other.getColorDetails(2, 0, 2)[2]);
+    theCubeData[1][2][1] = getColor(other.getColorDetails(1, 0, 2)[2]);
+    theCubeData[1][2][2] = getColor(other.getColorDetails(0, 0, 2)[2]);
+
+    printCube(theCubeData);
 }
 void Cube::printHistory() {
     for(int i = 0; i < historyOfMovements.size(); i++){
