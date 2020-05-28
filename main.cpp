@@ -8,14 +8,18 @@
 int main(int argc, char** argv) {
 
     Cube test;
-    test = test.scrambleCube(4);
+    test = test.Fn();
+    test = test.Rn();
+    test = test.L();
+    test = test.B();
+    test.printCube(test.theCubeData);
     std::cout << "Source cube: " << std::endl;
     test.printCube(test.theCubeData);
     Cube toSend = test;
     vector<string> empty;
     toSend.setHistory(empty);
     CubeSolver solver;
-    Cube answer = solver.solveTheCube(toSend);
+    Cube answer = solver.solveTheCube(test);
     vector<string> history =  answer.getHistory();
     std::cout << "Moves to solve: " << std::endl;
     for(string& move: history){
